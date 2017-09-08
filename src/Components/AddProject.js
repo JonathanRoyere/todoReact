@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 import ProjectItem from "./ProjectItem";
 
 class AddProject extends Component {
@@ -21,6 +22,7 @@ class AddProject extends Component {
       }
       else {
         this.setState({newProject: {
+        id:uuid.v4(),
         title: this.refs.title.value,
         category: this.refs.category.value
       }}, function() {
@@ -54,5 +56,12 @@ class AddProject extends Component {
     );
   }
 }
+
+//type error validation
+AddProject.propTypes = {
+  categories: React.PropTypes.array,
+  addProject: React.PropTypes.func
+}
+
 
 export default AddProject;
